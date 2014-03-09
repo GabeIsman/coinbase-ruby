@@ -47,8 +47,8 @@ module Coinbase
       url
     end
 
-    def acquire_access_token(authorization_code)
-      @oauth_token = @oauth_client.auth_code.get_token(authorization_code)
+    def acquire_access_token(authorization_code, redirect_uri)
+      @oauth_token = @oauth_client.auth_code.get_token(authorization_code, redirect_uri: redirect_uri)
     end
 
     private
