@@ -42,7 +42,7 @@ module Coinbase
 
     def get_authorize_url(redirect_uri, options={})
       scope = options[:scope] ? options[:scope].join('+') : nil
-      url = @oauth_token.client.auth_code.authorize_url(redirect_uri: redirect_uri, scope: @scope)
+      url = @client.auth_code.authorize_url(redirect_uri: redirect_uri, scope: @scope)
       url = url + '&' + options[:params] if options[:params]
       url
     end
