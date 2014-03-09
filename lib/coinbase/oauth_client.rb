@@ -14,7 +14,7 @@ module Coinbase
         :expires_in => options[:expires_in],
         :expires => options[:expires]
       }
-      @oauth_token = OAuth2::AccessToken.new(oauth_client, access_token, token_options) if access_token
+      @oauth_token = OAuth2::AccessToken.new(@oauth_client, access_token, token_options) if access_token
     end
 
     def http_verb(verb, path, options={})
@@ -42,7 +42,7 @@ module Coinbase
 
     def get_authorize_url(redirect_uri, options={})
       scope = options[:scope] ? options[:scope].join('+') : nil
-      url = @oauth_client.auth_code.authorize_url(redirect_uri: redirect_uri, scope: @scope)
+      url = @oauth_client.auth_code.authorize_url(redirect_uri: redirect_uri, scope: scope)
       url = url + '&' + options[:params] if options[:params]
       url
     end
