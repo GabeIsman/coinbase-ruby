@@ -31,14 +31,15 @@ module Coinbase
       hash
     end
 
-    # Getter included so it can be mocked out in testing.
     def oauth_token
       @oauth_token
     end
 
-    def refresh_token
+    def refresh!
        @oauth_token = oauth_token.refresh!
     end
+
+    private
 
     def remove_leading_slash(path)
       path.sub(/^\//, '')
